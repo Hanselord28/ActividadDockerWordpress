@@ -1,1 +1,2 @@
-'''bash ejecutar docker up -d --build
+**Ejecutar en cmd**
+ejecutar docker up -d --build
