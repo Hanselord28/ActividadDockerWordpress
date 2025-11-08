@@ -1,0 +1,33 @@
+services:
+
+  wordpress:
+    container_name: wordPag
+    image: wordpress:6.4.2-apache
+    restart: always
+    ports:
+      - 8082:80
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: userWord
+      WORDPRESS_DB_PASSWORD: word123
+      WORDPRESS_DB_NAME: dbWord
+    volumes:
+      - wordpress:/var/www/html
+
+  db:
+    container_name: dbWord
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: dbWord
+      MYSQL_USER: userWord
+      MYSQL_PASSWORD: word123
+      MYSQL_ROOT_PASSWORD: word321
+      
+    volumes:
+      - db:/var/lib/mysql
+
+volumes:
+  wordpress:
+  db:
+
